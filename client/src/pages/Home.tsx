@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { MapPin, Phone, Clock, Truck, Award, Zap, Users, ChevronDown, Star, ArrowRight, MessageCircle } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { MapView } from "@/components/Map";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t } from "@/lib/i18n";
@@ -22,78 +22,138 @@ import { t } from "@/lib/i18n";
 // Product data structure
 const productCategories = [
   {
-    id: "massage-chairs",
-    nameKey: "categories.massage_chairs",
-    descriptionKey: "categories.massage_chairs_desc",
-    image: "/images/massage-chairs-category.jpg",
-    products: [
-      {
-        id: 1,
-        nameKey: "popular_products.premium_chair",
-        price: 172000,
-        rating: 4.9,
-        reviews: 128,
-        descriptionKey: "product_detail.professional_massage",
-        featuresKeys: ["product_detail.massage_modes", "product_detail.back_support", "product_detail.zero_gravity", "product_detail.control_panel", "product_detail.warranty"],
-        image: "/images/massage-chairs-category.jpg",
-      },
-      {
-        id: 2,
-        nameKey: "popular_products.standard_chair",
-        price: 95000,
-        rating: 4.7,
-        reviews: 89,
-        descriptionKey: "product_detail.professional_massage",
-        featuresKeys: ["product_detail.massage_modes", "product_detail.back_support", "product_detail.zero_gravity", "product_detail.control_panel", "product_detail.warranty"],
-        image: "/images/massage-chairs-category.jpg",
-      },
-      {
-        id: 3,
-        nameKey: "popular_products.compact_chair",
-        price: 65000,
-        rating: 4.5,
-        reviews: 56,
-        descriptionKey: "product_detail.professional_massage",
-        featuresKeys: ["product_detail.massage_modes", "product_detail.back_support", "product_detail.zero_gravity", "product_detail.control_panel", "product_detail.warranty"],
-        image: "/images/massage-chairs-category.jpg",
-      },
-    ],
-  },
-  {
     id: "sports-equipment",
     nameKey: "categories.sports_equipment",
     descriptionKey: "categories.sports_equipment_desc",
     image: "/images/treadmills-category.jpg",
     products: [
       {
-        id: 4,
-        nameKey: "popular_products.premium_chair",
-        price: 89000,
+        id: 1,
+        nameKey: "products.treadmill_1",
+        price: 25000,
+        rating: 4.8,
+        reviews: 42,
+        descriptionKey: "products.treadmill_1_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/Chasall 25 000.png",
+      },
+      {
+        id: 2,
+        nameKey: "products.treadmill_2",
+        price: 55000,
         rating: 4.9,
-        reviews: 156,
-        descriptionKey: "product_detail.professional_massage",
-        featuresKeys: ["product_detail.massage_modes", "product_detail.back_support", "product_detail.zero_gravity", "product_detail.control_panel", "product_detail.warranty"],
-        image: "/images/treadmills-category.jpg",
+        reviews: 35,
+        descriptionKey: "products.treadmill_2_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/Chasall 55 000.png",
+      },
+      {
+        id: 3,
+        nameKey: "products.treadmill_3",
+        price: 70000,
+        rating: 4.7,
+        reviews: 28,
+        descriptionKey: "products.treadmill_3_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/Chasall 70 000.png",
+      },
+      {
+        id: 4,
+        nameKey: "products.treadmill_4",
+        price: 130000,
+        rating: 5.0,
+        reviews: 15,
+        descriptionKey: "products.treadmill_4_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/Chasall 130 000.png",
       },
       {
         id: 5,
-        nameKey: "popular_products.standard_chair",
-        price: 52000,
-        rating: 4.6,
-        reviews: 102,
-        descriptionKey: "product_detail.professional_massage",
-        featuresKeys: ["product_detail.massage_modes", "product_detail.back_support", "product_detail.zero_gravity", "product_detail.control_panel", "product_detail.warranty"],
-        image: "/images/treadmills-category.jpg",
+        nameKey: "products.treadmill_5",
+        price: 75000,
+        rating: 4.8,
+        reviews: 22,
+        descriptionKey: "products.treadmill_5_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/Chasall 75 000.png",
       },
       {
         id: 6,
-        nameKey: "popular_products.compact_chair",
-        price: 145000,
+        nameKey: "products.treadmill_6",
+        price: 35000,
+        rating: 4.6,
+        reviews: 31,
+        descriptionKey: "products.treadmill_6_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/Chasall 35 000.png",
+      },
+    ],
+  },
+  {
+    id: "massage-chairs",
+    nameKey: "categories.massage_chairs",
+    descriptionKey: "categories.massage_chairs_desc",
+    image: "/images/massage-chairs-category.jpg",
+    products: [
+      {
+        id: 7,
+        nameKey: "products.chair_1",
+        price: 95000,
+        rating: 4.7,
+        reviews: 18,
+        descriptionKey: "products.chair_1_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/Relax mini 95 000.png",
+      },
+      {
+        id: 8,
+        nameKey: "products.chair_2",
+        price: 90000,
+        rating: 4.9,
+        reviews: 24,
+        descriptionKey: "products.chair_2_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/COMFORT FU JU LUX 90 000.png",
+      },
+      {
+        id: 9,
+        nameKey: "products.chair_3",
+        price: 142000,
         rating: 4.8,
-        reviews: 78,
-        descriptionKey: "product_detail.professional_massage",
-        featuresKeys: ["product_detail.massage_modes", "product_detail.back_support", "product_detail.zero_gravity", "product_detail.control_panel", "product_detail.warranty"],
-        image: "/images/treadmills-category.jpg",
+        reviews: 12,
+        descriptionKey: "products.chair_3_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/FAMILY LUX RK008 142 000.png",
+      },
+      {
+        id: 10,
+        nameKey: "products.chair_4",
+        price: 172000,
+        rating: 5.0,
+        reviews: 9,
+        descriptionKey: "products.chair_4_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/BUSINESS CLASS Z201 172 000.png",
+      },
+      {
+        id: 11,
+        nameKey: "products.chair_5",
+        price: 152000,
+        rating: 4.9,
+        reviews: 14,
+        descriptionKey: "products.chair_5_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/MASTER Z100 152 000.png",
+      },
+      {
+        id: 12,
+        nameKey: "products.chair_6",
+        price: 185000,
+        rating: 5.0,
+        reviews: 7,
+        descriptionKey: "products.chair_6_desc",
+        featuresKeys: ["product_detail.warranty"],
+        image: "/images/PREMIUM MAX 780  185 000.png",
       },
     ],
   },
@@ -107,7 +167,20 @@ export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
-  const mapRef = useRef<google.maps.Map | null>(null);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 200000]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredProducts = selectedCategory
+    ? productCategories
+      .find((c) => c.id === selectedCategory)
+      ?.products.filter((p) => {
+        const matchesPrice = p.price >= priceRange[0] && p.price <= priceRange[1];
+        const productName = t(p.nameKey, language).toLowerCase();
+        const productDesc = t(p.descriptionKey, language).toLowerCase();
+        const matchesSearch = productName.includes(searchQuery.toLowerCase()) || productDesc.includes(searchQuery.toLowerCase());
+        return matchesPrice && matchesSearch;
+      })
+    : [];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,7 +195,7 @@ export default function Home() {
     let message = language === "ru" ? "Привет! Я интересуюсь вашими товарами." : "Салам! Мен сиздин товарларыңызга кызыкдам.";
     if (product) {
       const productName = product.nameKey ? t(product.nameKey, language) : product.name;
-      message = language === "ru" 
+      message = language === "ru"
         ? `Привет! Я интересуюсь товаром: "${productName}" (${product.price} сом). Можете ли вы предоставить подробную информацию?`
         : `Салам! Мен бул товарга кызыкдам: "${productName}" (${product.price} сом). Сиз толук маалыматты бере аласыз?`;
     }
@@ -141,32 +214,6 @@ export default function Home() {
     setShowFeedbackForm(false);
   };
 
-  const handleMapReady = (map: google.maps.Map) => {
-    mapRef.current = map;
-    const chinatopLocation = { lat: 42.8765, lng: 74.5872 };
-    map.setCenter(chinatopLocation);
-    map.setZoom(16);
-
-    const marker = new google.maps.Marker({
-      position: chinatopLocation,
-      map: map,
-      title: "ChinaTop - Жаманбаева 8/2, Бишкек",
-      icon: "http://maps.google.com/mapfiles/ms/icons/orange-dot.png",
-      animation: google.maps.Animation.DROP,
-    });
-
-    const infoWindow = new google.maps.InfoWindow({
-      content: `
-        <div style="padding: 12px; font-family: Arial, sans-serif; min-width: 200px;">
-          <h3 style="margin: 0 0 8px 0; color: #ff6a00; font-weight: bold; font-size: 14px;">ChinaTop</h3>
-          <p style="margin: 0 0 6px 0; font-size: 12px; color: #333;"><strong>${t("map.address", language)}:</strong> Жаманбаева 8/2, Бишкек</p>
-          <p style="margin: 0 0 6px 0; font-size: 12px; color: #333;"><strong>${t("map.phone", language)}:</strong> +996 507 120 110</p>
-          <p style="margin: 0; font-size: 12px; color: #666;">Пн–Сб: 09:00 – 18:30</p>
-        </div>
-      `,
-    });
-    infoWindow.open(map, marker);
-  };
 
   // Show product detail view
   if (selectedProduct) {
@@ -249,7 +296,12 @@ export default function Home() {
                 <Button
                   variant="outline"
                   className="border-2 border-orange-300 text-gray-900 px-8 py-6 text-lg rounded-xl hover:bg-orange-50 glass"
-                  onClick={() => setSelectedProduct(null)}
+                  onClick={() => {
+                    setSelectedProduct(null);
+                    setTimeout(() => {
+                      document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
                 >
                   {t("product_detail.view_other", language)}
                 </Button>
@@ -273,14 +325,14 @@ export default function Home() {
               <p className="text-[10px] md:text-xs text-orange-600 leading-tight">Premium Logistics</p>
             </div>
           </div>
-          
+
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             <a href="#products" className="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">{t("nav.products", language)}</a>
             <a href="#about" className="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">{t("nav.about", language)}</a>
             <a href="#location" className="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">{t("nav.location", language)}</a>
             <a href="#contact" className="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">{t("nav.contacts", language)}</a>
           </div>
-          
+
           <div className="flex items-center gap-1.5 md:gap-4">
             <ThemeSwitcher />
             <LanguageSwitcher />
@@ -308,7 +360,11 @@ export default function Home() {
               <Button onClick={() => handleWhatsAppClick()} className="gradient-orange text-white px-8 py-6 text-lg rounded-xl hover-scale shadow-xl">
                 {t("hero.cta_whatsapp", language)}
               </Button>
-              <Button variant="outline" className="border-2 border-orange-300 text-gray-900 px-8 py-6 text-lg rounded-xl hover:bg-orange-50 glass">
+              <Button
+                variant="outline"
+                className="border-2 border-orange-300 text-gray-900 px-8 py-6 text-lg rounded-xl hover:bg-orange-50 glass"
+                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 {t("hero.cta_products", language)}
               </Button>
             </div>
@@ -366,7 +422,12 @@ export default function Home() {
         <p className="text-center text-gray-600 mb-12">{t("categories.subtitle", language)}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {productCategories.map((category) => (
-            <div key={category.id} className="group glass p-6 sm:p-8 rounded-2xl hover-scale transition-all cursor-pointer" onClick={() => setSelectedCategory(category.id)}>
+            <div key={category.id} className="group glass p-6 sm:p-8 rounded-2xl hover-scale transition-all cursor-pointer" onClick={() => {
+              setSelectedCategory(category.id);
+              setTimeout(() => {
+                document.getElementById('popular-products')?.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}>
               <img src={category.image} alt={t(category.nameKey, language)} className="w-full h-48 sm:h-64 object-cover rounded-xl mb-6 group-hover:shadow-xl transition-shadow" />
               <h3 className="text-xl sm:text-2xl font-poppins font-bold text-gray-900 dark:text-white mb-2">{t(category.nameKey, language)}</h3>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-6">{t(category.descriptionKey, language)}</p>
@@ -380,7 +441,7 @@ export default function Home() {
 
       {/* Popular Products */}
       {selectedCategory && (
-        <section className="bg-white/50 backdrop-blur-md py-20">
+        <section id="popular-products" className="bg-white/50 backdrop-blur-md py-20">
           <div className="container">
             <div className="flex justify-between items-center mb-12">
               <div>
@@ -391,30 +452,64 @@ export default function Home() {
                 {t("gallery.close", language)}
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {productCategories
-                .find((c) => c.id === selectedCategory)
-                ?.products.map((product) => (
-                  <div key={product.id} className="glass p-6 rounded-xl hover-scale transition-all group">
-                    <img src={product.image} alt={t(product.nameKey, language)} className="w-full h-48 object-cover rounded-lg mb-4 group-hover:shadow-lg transition-shadow" />
-                    <div className="flex items-center gap-1 mb-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className={`w-3 h-3 ${i < Math.floor(product.rating) ? "fill-orange-400 text-orange-400" : "text-gray-300"}`} />
-                      ))}
-                      <span className="text-xs text-gray-600 ml-2">({product.reviews})</span>
-                    </div>
-                    <h4 className="font-poppins font-bold text-gray-900 mb-2">{t(product.nameKey, language)}</h4>
-                    <p className="text-2xl font-bold text-orange-600 mb-4">{product.price.toLocaleString()} {language === "ru" ? "сом" : "сом"}</p>
-                    <div className="flex gap-2">
-                      <Button onClick={() => setSelectedProduct(product)} className="flex-1 gradient-orange text-white rounded-lg hover-scale">
-                        {t("gallery.details", language)}
-                      </Button>
-                      <Button onClick={() => handleWhatsAppClick(product)} className="flex-1 gradient-orange text-white rounded-lg hover-scale">
-                        {t("popular_products.request_price", language)}
-                      </Button>
-                    </div>
+            {/* Filters */}
+            <div className="glass p-6 rounded-2xl mb-12 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {language === "ru" ? "Поиск по названию" : "Аты боюнча издөө"}
+                  </label>
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder={language === "ru" ? "Например: CHS581L..." : "Мисалы: CHS581L..."}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {language === "ru" ? "Цена до:" : "Баасы чейин:"} {priceRange[1].toLocaleString()} сом
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="200000"
+                    step="5000"
+                    value={priceRange[1]}
+                    onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
+                    className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-orange-600"
+                  />
+                  <div className="flex justify-between text-xs text-gray-500 mt-2">
+                    <span>0 сом</span>
+                    <span>200 000 сом</span>
                   </div>
-                ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {filteredProducts?.map((product) => (
+                <div key={product.id} className="glass p-6 rounded-xl hover-scale transition-all group">
+                  <img src={product.image} alt={t(product.nameKey, language)} className="w-full h-48 object-cover rounded-lg mb-4 group-hover:shadow-lg transition-shadow" />
+                  <div className="flex items-center gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className={`w-3 h-3 ${i < Math.floor(product.rating) ? "fill-orange-400 text-orange-400" : "text-gray-300"}`} />
+                    ))}
+                    <span className="text-xs text-gray-600 ml-2">({product.reviews})</span>
+                  </div>
+                  <h4 className="font-poppins font-bold text-gray-900 mb-2">{t(product.nameKey, language)}</h4>
+                  <p className="text-2xl font-bold text-orange-600 mb-4">{product.price.toLocaleString()} {language === "ru" ? "сом" : "сом"}</p>
+                  <div className="flex gap-2">
+                    <Button onClick={() => setSelectedProduct(product)} className="flex-1 gradient-orange text-white rounded-lg hover-scale">
+                      {t("gallery.details", language)}
+                    </Button>
+                    <Button onClick={() => handleWhatsAppClick(product)} className="flex-1 gradient-orange text-white rounded-lg hover-scale">
+                      {t("popular_products.request_price", language)}
+                    </Button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -464,7 +559,7 @@ export default function Home() {
               <p className="text-gray-600">{t("map.phone", language)}</p>
             </div>
           </div>
-          <MapView initialCenter={{ lat: 42.8765, lng: 74.5872 }} initialZoom={16} onMapReady={handleMapReady} className="rounded-2xl shadow-xl" />
+          <MapView initialCenter={{ lat: 42.8765, lng: 74.5872 }} initialZoom={16} className="rounded-2xl shadow-xl" />
         </div>
       </section>
 
@@ -546,8 +641,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container text-center">
-          <p className="mb-2">© 2024 ChinaTop. {language === "ru" ? "Все права защищены." : "Бардык укуктар сакталган."}</p>
-          <p className="text-gray-400">{language === "ru" ? "Доставка премиум товаров из Китая" : "Чынайдан премиум товарлар жеткирүү"}</p>
+          <p className="mb-2">© 2026 ChinaTop. {language === "ru" ? "Все права защищены." : "Бардык укуктар сакталган."}</p>
+          <p className="text-gray-400">{language === "ru" ? "Доставка премиум товаров из Китая" : "Кытайдан премиум товарлар жеткирүү"}</p>
         </div>
       </footer>
     </div>
