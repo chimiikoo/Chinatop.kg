@@ -1,162 +1,174 @@
 [
-    {
-        "id": "sports-equipment",
-        "nameKey": "categories.sports_equipment",
-        "descriptionKey": "categories.sports_equipment_desc",
-        "image": "/images/treadmills-category.jpg",
-        "products": [
-            {
-                "id": 1,
-                "nameKey": "products.treadmill_1",
-                "price": 25000,
-                "rating": 4.8,
-                "reviews": 42,
-                "descriptionKey": "products.treadmill_1_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/Chasall 25 000.png"
-            },
-            {
-                "id": 2,
-                "nameKey": "products.treadmill_2",
-                "price": 55000,
-                "rating": 4.9,
-                "reviews": 35,
-                "descriptionKey": "products.treadmill_2_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/Chasall 55 000.png"
-            },
-            {
-                "id": 3,
-                "nameKey": "products.treadmill_3",
-                "price": 70000,
-                "rating": 4.7,
-                "reviews": 28,
-                "descriptionKey": "products.treadmill_3_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/Chasall 70 000.png"
-            },
-            {
-                "id": 4,
-                "nameKey": "products.treadmill_4",
-                "price": 130000,
-                "rating": 5.0,
-                "reviews": 15,
-                "descriptionKey": "products.treadmill_4_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/Chasall 130 000.png"
-            },
-            {
-                "id": 5,
-                "nameKey": "products.treadmill_5",
-                "price": 75000,
-                "rating": 4.8,
-                "reviews": 22,
-                "descriptionKey": "products.treadmill_5_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/Chasall 75 000.png"
-            },
-            {
-                "id": 6,
-                "nameKey": "products.treadmill_6",
-                "price": 35000,
-                "rating": 4.6,
-                "reviews": 31,
-                "descriptionKey": "products.treadmill_6_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/Chasall 35 000.png"
-            }
-        ]
-    },
-    {
-        "id": "massage-chairs",
-        "nameKey": "categories.massage_chairs",
-        "descriptionKey": "categories.massage_chairs_desc",
-        "image": "/images/massage-chairs-category.jpg",
-        "products": [
-            {
-                "id": 7,
-                "nameKey": "products.chair_1",
-                "price": 95000,
-                "rating": 4.7,
-                "reviews": 18,
-                "descriptionKey": "products.chair_1_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/Relax mini 95 000.png"
-            },
-            {
-                "id": 8,
-                "nameKey": "products.chair_2",
-                "price": 90000,
-                "rating": 4.9,
-                "reviews": 24,
-                "descriptionKey": "products.chair_2_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/COMFORT FU JU LUX 90 000.png"
-            },
-            {
-                "id": 9,
-                "nameKey": "products.chair_3",
-                "price": 142000,
-                "rating": 4.8,
-                "reviews": 12,
-                "descriptionKey": "products.chair_3_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/FAMILY LUX RK008 142 000.png"
-            },
-            {
-                "id": 10,
-                "nameKey": "products.chair_4",
-                "price": 172000,
-                "rating": 5.0,
-                "reviews": 9,
-                "descriptionKey": "products.chair_4_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/BUSINESS CLASS Z201 172 000.png"
-            },
-            {
-                "id": 11,
-                "nameKey": "products.chair_5",
-                "price": 152000,
-                "rating": 4.9,
-                "reviews": 14,
-                "descriptionKey": "products.chair_5_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/MASTER Z100 152 000.png"
-            },
-            {
-                "id": 12,
-                "nameKey": "products.chair_6",
-                "price": 185000,
-                "rating": 5.0,
-                "reviews": 7,
-                "descriptionKey": "products.chair_6_desc",
-                "featuresKeys": [
-                    "product_detail.warranty"
-                ],
-                "image": "/images/PREMIUM MAX 780  185 000.png"
-            }
-        ]
-    }
+  {
+    "id": "sports-equipment",
+    "nameKey": "categories.sports_equipment",
+    "descriptionKey": "categories.sports_equipment_desc",
+    "image": "/images/treadmills-category.jpg",
+    "products": [
+      {
+        "id": 1,
+        "nameKey": "products.treadmill_1",
+        "price": 25000,
+        "rating": 4.8,
+        "reviews": 42,
+        "descriptionKey": "products.treadmill_1_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/Chasall 25 000.png"
+      },
+      {
+        "id": 2,
+        "nameKey": "products.treadmill_2",
+        "price": 55000,
+        "rating": 5,
+        "reviews": 35,
+        "descriptionKey": "products.treadmill_2_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/Chasall 55 000.png"
+      },
+      {
+        "id": 3,
+        "nameKey": "products.treadmill_3",
+        "price": 70000,
+        "rating": 5,
+        "reviews": 28,
+        "descriptionKey": "products.treadmill_3_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/Chasall 70 000.png"
+      },
+      {
+        "id": 4,
+        "nameKey": "products.treadmill_4",
+        "price": 130000,
+        "rating": 5,
+        "reviews": 15,
+        "descriptionKey": "products.treadmill_4_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/Chasall 130 000.png"
+      },
+      {
+        "id": 5,
+        "nameKey": "products.treadmill_5",
+        "price": 75000,
+        "rating": 4.8,
+        "reviews": 22,
+        "descriptionKey": "products.treadmill_5_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/Chasall 75 000.png"
+      },
+      {
+        "id": 6,
+        "nameKey": "products.treadmill_6",
+        "price": 35000,
+        "rating": 4.6,
+        "reviews": 31,
+        "descriptionKey": "products.treadmill_6_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/Chasall 35 000.png"
+      }
+    ]
+  },
+  {
+    "id": "massage-chairs",
+    "nameKey": "categories.massage_chairs",
+    "descriptionKey": "categories.massage_chairs_desc",
+    "image": "/images/massage-chairs-category.jpg",
+    "products": [
+      {
+        "id": 7,
+        "nameKey": "products.chair_1",
+        "price": 95000,
+        "rating": 4.7,
+        "reviews": 18,
+        "descriptionKey": "products.chair_1_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/Relax mini 95 000.png"
+      },
+      {
+        "id": 8,
+        "nameKey": "products.chair_2",
+        "price": 90000,
+        "rating": 5,
+        "reviews": 24,
+        "descriptionKey": "products.chair_2_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/COMFORT FU JU LUX 90 000.png"
+      },
+      {
+        "id": 9,
+        "nameKey": "products.chair_3",
+        "price": 142000,
+        "rating": 4.8,
+        "reviews": 12,
+        "descriptionKey": "products.chair_3_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/FAMILY LUX RK008 142 000.png"
+      },
+      {
+        "id": 10,
+        "nameKey": "products.chair_4",
+        "price": 172000,
+        "rating": 5,
+        "reviews": 9,
+        "descriptionKey": "products.chair_4_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/BUSINESS CLASS Z201 172 000.png"
+      },
+      {
+        "id": 11,
+        "nameKey": "products.chair_5",
+        "price": 152000,
+        "rating": 5,
+        "reviews": 14,
+        "descriptionKey": "products.chair_5_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/MASTER Z100 152 000.png"
+      },
+      {
+        "id": 12,
+        "nameKey": "products.chair_6",
+        "price": 185000,
+        "rating": 5,
+        "reviews": 7,
+        "descriptionKey": "products.chair_6_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/PREMIUM MAX 780  185 000.png"
+      },
+      {
+        "id": 13,
+        "nameKey": "products.chair_7",
+        "price": 50000,
+        "rating": 5,
+        "reviews": 7,
+        "descriptionKey": "products.chair_7_desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/PREMIUM MAX 780  185 000.png"
+      }
+    ]
+  }
 ]

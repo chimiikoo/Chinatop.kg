@@ -30,6 +30,12 @@ export default defineConfig({
       "127.0.0.1",
       ".chinatop.kg",
     ],
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
     fs: {
       strict: true,
       deny: ["**/.*"],

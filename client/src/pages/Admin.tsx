@@ -34,7 +34,14 @@ export default function Admin() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ password }),
             });
-            const data = await res.json();
+
+            const data = await res.json().catch(() => ({}));
+
+            if (!res.ok) {
+                toast.error(data.error || "Authentication failed");
+                return;
+            }
+
             if (data.success) {
                 setToken(data.token);
                 localStorage.setItem("adminToken", data.token);
@@ -44,7 +51,8 @@ export default function Admin() {
                 toast.error("Invalid password");
             }
         } catch (e) {
-            toast.error("Login failed");
+            console.error("Login Error:", e);
+            toast.error("Login failed: could not connect to server");
         }
     };
 

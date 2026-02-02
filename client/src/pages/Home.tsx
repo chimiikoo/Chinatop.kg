@@ -45,12 +45,12 @@ export default function Home() {
   }, []);
 
   const handleWhatsAppClick = (product?: any) => {
-    let message = language === "ru" ? "Привет! Я интересуюсь вашими товарами." : "Салам! Мен сиздин товарларыңызга кызыкдам.";
+    let message = language === "ru" ? "Привет! Я интересуюсь вашими товарами." : "Салам! Мен сиздин товарларыңызга кызыгып жатам.";
     if (product) {
       const productName = product.nameKey ? t(product.nameKey, language) : product.name;
       message = language === "ru"
         ? `Привет! Я интересуюсь товаром: "${productName}" (${product.price} сом). Можете ли вы предоставить подробную информацию?`
-        : `Салам! Мен бул товарга кызыкдам: "${productName}" (${product.price} сом). Сиз толук маалыматты бере аласыз?`;
+        : `Ассалому алейкум! Мен бул товарга кызыгып жатам: "${productName}" (${product.price} сом). Сиз толук маалыматты бере аласызбы?`;
     }
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/996507120110?text=${encodedMessage}`, "_blank");
