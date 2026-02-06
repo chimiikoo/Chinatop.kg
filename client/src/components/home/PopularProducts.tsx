@@ -84,23 +84,35 @@ export function PopularProducts({
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
                     {filteredProducts?.map((product) => (
-                        <div key={product.id} className="glass p-6 rounded-xl hover-scale transition-all group">
-                            <img src={product.image} alt={t(product.nameKey, language)} className="w-full h-48 object-cover rounded-lg mb-4 group-hover:shadow-lg transition-shadow" />
-                            <div className="flex items-center gap-1 mb-2">
+                        <div
+                            key={product.id}
+                            className="glass p-3 md:p-6 rounded-xl hover-scale transition-all group cursor-pointer"
+                            onClick={() => setSelectedProduct(product)}
+                        >
+                            <img src={product.image} alt={t(product.nameKey, language)} className="w-full h-32 md:h-48 object-cover rounded-lg mb-3 md:mb-4 group-hover:shadow-lg transition-shadow" />
+                            <div className="flex items-center gap-1 mb-1 md:mb-2">
                                 {[...Array(5)].map((_, i) => (
                                     <Star key={i} className={`w-3 h-3 ${i < Math.floor(product.rating) ? "fill-orange-400 text-orange-400" : "text-gray-300"}`} />
                                 ))}
-                                <span className="text-xs text-gray-600 ml-2">({product.reviews})</span>
+                                <span className="text-xs md:text-sm text-gray-600 font-medium ml-1 md:ml-2">
+                                    {t("popular_products.quantity", language)}: {product.reviews}
+                                </span>
                             </div>
-                            <h4 className="font-poppins font-bold text-gray-900 mb-2">{t(product.nameKey, language)}</h4>
-                            <p className="text-2xl font-bold text-orange-600 mb-4">{product.price.toLocaleString()} {language === "ru" ? "сом" : "сом"}</p>
-                            <div className="flex gap-2">
-                                <Button onClick={() => setSelectedProduct(product)} className="flex-1 gradient-orange text-white rounded-lg hover-scale">
+                            <h4 className="font-poppins font-bold text-gray-900 text-sm md:text-base mb-1 md:mb-2 line-clamp-2">{t(product.nameKey, language)}</h4>
+                            <p className="text-sm md:text-2xl font-bold text-orange-600 mb-2 md:mb-4">{product.price.toLocaleString()} {language === "ru" ? "сом" : "сом"}</p>
+                            <div className="flex flex-col lg:flex-row gap-2">
+                                <Button className="flex-1 gradient-orange text-white rounded-lg hover-scale text-xs md:text-sm py-1 h-8 md:h-10">
                                     {t("gallery.details", language)}
                                 </Button>
-                                <Button onClick={() => handleWhatsAppClick(product)} className="flex-1 gradient-orange text-white rounded-lg hover-scale">
+                                <Button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleWhatsAppClick(product);
+                                    }}
+                                    className="flex-1 gradient-orange text-white rounded-lg hover-scale text-xs md:text-sm py-1 h-8 md:h-10"
+                                >
                                     {t("popular_products.request_price", language)}
                                 </Button>
                             </div>

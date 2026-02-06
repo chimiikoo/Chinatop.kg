@@ -46,7 +46,8 @@
   "popular_products": {
     "title": "Популярные товары",
     "subtitle": "Лучшие предложения от наших клиентов",
-    "request_price": "Запросить цену"
+    "request_price": "Запросить цену",
+    "quantity": "Количество"
   },
   "products": {
     "treadmill_1": "Беговая дорожка CHS581L (100 кг)",

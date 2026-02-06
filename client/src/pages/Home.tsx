@@ -80,7 +80,7 @@ export default function Home() {
             <img src="/images/chinatop-logo.png" alt="ChinaTop" className="w-8 h-8 md:w-10 md:h-10 rounded-full" />
             <div className="hidden sm:block">
               <h2 className="font-poppins font-semibold text-gray-900 text-sm md:text-lg tracking-tight leading-tight">ChinaTop</h2>
-              <p className="text-[10px] md:text-xs text-orange-600 leading-tight">Premium Logistics</p>
+              <p className="text-[10px] md:text-xs text-orange-600 leading-tight">Премиум логистика</p>
             </div>
           </div>
 
@@ -177,7 +177,7 @@ export default function Home() {
       <footer className="bg-gray-900 text-white py-12">
         <div className="container text-center">
           <p className="mb-2">© 2026 ChinaTop. {language === "ru" ? "Все права защищены." : "Бардык укуктар сакталган."}</p>
-          <p className="text-gray-400">{language === "ru" ? "Доставка премиум товаров из Китая" : "Кытайдан премиум товарлар жеткирүү"}</p>
+          <p className="text-gray-400">{language === "ru" ? "Доставка премиум товаров из Китая" : "Кытайдан премиум товарларды жеткирүү"}</p>
         </div>
       </footer>
     </div>

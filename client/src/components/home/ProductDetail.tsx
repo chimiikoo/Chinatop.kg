@@ -57,7 +57,9 @@ export function ProductDetail({
                                         <Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? "fill-orange-400 text-orange-400" : "text-gray-300"}`} />
                                     ))}
                                 </div>
-                                <span className="text-sm text-gray-600">({product.reviews} {language === "ru" ? "отзывов" : "пикир"})</span>
+                                <span className="text-sm text-gray-600 font-medium">
+                                    {t("popular_products.quantity", language)}: {product.reviews}
+                                </span>
                             </div>
                         </div>
 

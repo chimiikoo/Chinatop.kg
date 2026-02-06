@@ -76,6 +76,18 @@
           "product_detail.warranty"
         ],
         "image": "/images/Chasall 35 000.png"
+      },
+      {
+        "id": 1770030062109,
+        "nameKey": "Чайхана",
+        "price": 30000,
+        "rating": 5,
+        "reviews": 31,
+        "descriptionKey": "new.product.desc",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/images/Chasall 35 000.png"
       }
     ]
   },
