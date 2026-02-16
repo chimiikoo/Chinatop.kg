@@ -1,14 +1,15 @@
-
 import { Star, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { t, type Language } from "@/lib/i18n";
+import { useState } from "react";
+import { ManagerSelectionModal } from "./ManagerSelectionModal";
 
 interface ProductDetailProps {
     language: Language;
     product: any;
     setSelectedProduct: (product: any) => void;
-    handleWhatsAppClick: (product: any) => void;
+    handleWhatsAppClick: (product: any, managerPhone?: string, customMessage?: string) => void;
     isSticky: boolean;
 }
 
@@ -19,6 +20,7 @@ export function ProductDetail({
     handleWhatsAppClick,
     isSticky
 }: ProductDetailProps) {
+    const [showManagerSelect, setShowManagerSelect] = useState(false);
     const productName = product.nameKey ? t(product.nameKey, language) : product.name;
 
     return (
@@ -33,31 +35,31 @@ export function ProductDetail({
                     <img src="/images/chinatop-logo.png" alt="ChinaTop" className="w-10 h-10 rounded-full" />
                     <div className="flex items-center gap-4">
                         <LanguageSwitcher />
-                        <Button onClick={() => handleWhatsAppClick(product)} className="gradient-orange text-white">
+                        <Button onClick={() => setShowManagerSelect(true)} className="gradient-orange text-white">
                             WhatsApp
                         </Button>
                     </div>
                 </div>
             </nav>
 
-            <div className="container py-12">
+            <div className="container py-12 px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {/* Product Image */}
                     <div className="animate-fade-in">
-                        <img src={product.image} alt={productName} className="w-full h-96 object-cover rounded-2xl shadow-xl" />
+                        <img src={product.image} alt={productName} className="w-full h-auto md:h-96 object-cover rounded-2xl shadow-xl" />
                     </div>
 
                     {/* Product Details */}
                     <div className="space-y-6 animate-slide-in-right">
                         <div>
-                            <h1 className="text-4xl font-poppins font-bold text-gray-900 mb-2">{productName}</h1>
+                            <h1 className="text-3xl md:text-4xl font-poppins font-bold text-gray-900 dark:text-white mb-2">{productName}</h1>
                             <div className="flex items-center gap-2 mb-4">
                                 <div className="flex items-center gap-1">
                                     {[...Array(5)].map((_, i) => (
                                         <Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? "fill-orange-400 text-orange-400" : "text-gray-300"}`} />
                                     ))}
                                 </div>
-                                <span className="text-sm text-gray-600 font-medium">
+                                <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">
                                     {t("popular_products.quantity", language)}: {product.reviews}
                                 </span>
                             </div>
@@ -65,23 +67,23 @@ export function ProductDetail({
 
                         {/* Price */}
                         <div className="glass p-6 rounded-xl">
-                            <p className="text-gray-600 text-sm mb-2">{t("product_detail.current_price", language)}</p>
-                            <p className="text-4xl font-bold text-orange-600">{product.price.toLocaleString()} {language === "ru" ? "сом" : "сом"}</p>
+                            <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">{t("product_detail.current_price", language)}</p>
+                            <p className="text-3xl md:text-4xl font-bold text-orange-600">{product.price.toLocaleString()} {language === "ru" ? "сом" : "сом"}</p>
                         </div>
 
                         {/* Description */}
                         <div>
-                            <h3 className="text-xl font-poppins font-bold text-gray-900 mb-3">{t("product_detail.description", language)}</h3>
-                            <p className="text-gray-600 leading-relaxed">{t(product.descriptionKey, language)}</p>
+                            <h3 className="text-xl font-poppins font-bold text-gray-900 dark:text-white mb-3">{t("product_detail.description", language)}</h3>
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{t(product.descriptionKey, language)}</p>
                         </div>
 
                         {/* Features */}
                         <div>
-                            <h3 className="text-xl font-poppins font-bold text-gray-900 mb-3">{t("product_detail.characteristics", language)}</h3>
+                            <h3 className="text-xl font-poppins font-bold text-gray-900 dark:text-white mb-3">{t("product_detail.characteristics", language)}</h3>
                             <ul className="space-y-2">
                                 {product.featuresKeys.map((featureKey: string, i: number) => (
-                                    <li key={i} className="flex items-center gap-3 text-gray-700">
-                                        <div className="w-2 h-2 rounded-full gradient-orange"></div>
+                                    <li key={i} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                        <div className="w-2 h-2 rounded-full gradient-orange shrink-0"></div>
                                         {t(featureKey, language)}
                                     </li>
                                 ))}
@@ -91,7 +93,7 @@ export function ProductDetail({
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4 pt-6">
                             <Button
-                                onClick={() => handleWhatsAppClick(product)}
+                                onClick={() => setShowManagerSelect(true)}
                                 className="gradient-orange text-white px-8 py-6 text-lg rounded-xl hover-scale shadow-xl"
                             >
                                 <MessageCircle className="w-5 h-5 mr-2" />
@@ -99,7 +101,7 @@ export function ProductDetail({
                             </Button>
                             <Button
                                 variant="outline"
-                                className="border-2 border-orange-300 text-gray-900 px-8 py-6 text-lg rounded-xl hover:bg-orange-50 glass"
+                                className="border-2 border-orange-300 text-gray-900 dark:text-white px-8 py-6 text-lg rounded-xl hover:bg-orange-50 glass"
                                 onClick={() => {
                                     setSelectedProduct(null);
                                     setTimeout(() => {
@@ -113,6 +115,13 @@ export function ProductDetail({
                     </div>
                 </div>
             </div>
+
+            <ManagerSelectionModal
+                isOpen={showManagerSelect}
+                language={language}
+                onClose={() => setShowManagerSelect(false)}
+                onSelect={(phone) => handleWhatsAppClick(product, phone)}
+            />
         </div>
     );
 }

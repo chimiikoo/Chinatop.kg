@@ -206,9 +206,24 @@ export default function Admin() {
             <div className="space-y-8">
                 {categories.map((cat, catIndex) => (
                     <Card key={catIndex} className="relative">
-                        <CardHeader className="bg-gray-50 dark:bg-gray-800 flex flex-row items-center justify-between">
-                            <div className="flex-1">
-                                <CardTitle className="text-xl capitalize flex items-center gap-4">
+                        <CardHeader className="bg-gray-50 dark:bg-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div className="flex-1 flex items-center gap-4">
+                                <div className="relative group w-12 h-12">
+                                    <img src={cat.image} alt="cat" className="w-12 h-12 object-cover rounded-md border bg-gray-100" />
+                                    <label className="absolute inset-0 flex items-center justify-center bg-black/50 text-white opacity-0 group-hover:opacity-100 cursor-pointer rounded-md transition-opacity">
+                                        <Upload className="w-4 h-4" />
+                                        <input
+                                            type="file"
+                                            className="hidden"
+                                            accept="image/*"
+                                            onChange={(e) => {
+                                                const file = e.target.files?.[0];
+                                                if (file) handleImageUpload(catIndex, null, file);
+                                            }}
+                                        />
+                                    </label>
+                                </div>
+                                <CardTitle className="text-xl capitalize flex items-center gap-4 flex-1">
                                     <Input
                                         value={cat.id}
                                         onChange={(e) => {
@@ -221,9 +236,22 @@ export default function Admin() {
                                         }}
                                         className="max-w-[200px] h-8 text-lg font-bold"
                                     />
+                                    <Input
+                                        value={cat.image}
+                                        onChange={(e) => {
+                                            const val = e.target.value;
+                                            setCategories(prev => {
+                                                const newCats = [...prev];
+                                                newCats[catIndex] = { ...newCats[catIndex], image: val };
+                                                return newCats;
+                                            });
+                                        }}
+                                        className="max-w-[300px] h-8 text-xs font-normal"
+                                        placeholder="Category Image URL"
+                                    />
                                 </CardTitle>
                             </div>
-                            <div className="space-x-2">
+                            <div className="flex gap-2 shrink-0">
                                 <Button size="sm" onClick={() => addProduct(catIndex)} className="h-8">Add Product</Button>
                                 <Button size="sm" variant="destructive" onClick={() => removeCategory(catIndex)} className="h-8">Delete Category</Button>
                             </div>

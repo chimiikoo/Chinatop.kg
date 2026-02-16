@@ -76,18 +76,6 @@
           "product_detail.warranty"
         ],
         "image": "/images/Chasall 35 000.png"
-      },
-      {
-        "id": 1770030062109,
-        "nameKey": "Чайхана",
-        "price": 30000,
-        "rating": 5,
-        "reviews": 31,
-        "descriptionKey": "new.product.desc",
-        "featuresKeys": [
-          "product_detail.warranty"
-        ],
-        "image": "/images/Chasall 35 000.png"
       }
     ]
   },
@@ -164,18 +152,6 @@
         "rating": 5,
         "reviews": 7,
         "descriptionKey": "products.chair_6_desc",
-        "featuresKeys": [
-          "product_detail.warranty"
-        ],
-        "image": "/images/PREMIUM MAX 780  185 000.png"
-      },
-      {
-        "id": 13,
-        "nameKey": "products.chair_7",
-        "price": 50000,
-        "rating": 5,
-        "reviews": 7,
-        "descriptionKey": "products.chair_7_desc",
         "featuresKeys": [
           "product_detail.warranty"
         ],

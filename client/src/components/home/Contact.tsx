@@ -5,7 +5,7 @@ import { t, type Language } from "@/lib/i18n";
 
 interface ContactProps {
     language: Language;
-    handleWhatsAppClick: () => void;
+    handleWhatsAppClick: (product?: any, managerPhone?: string, customMessage?: string) => void;
 }
 
 export function Contact({ language, handleWhatsAppClick }: ContactProps) {
@@ -16,8 +16,7 @@ export function Contact({ language, handleWhatsAppClick }: ContactProps) {
         const feedbackText = language === "ru" ? "Обратная связь от" : "Пикир";
         const phoneText = language === "ru" ? "Телефон" : "Телефон";
         const message = `${feedbackText} ${formData.name}: ${formData.message}. ${phoneText}: ${formData.phone}`;
-        const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/996507120110?text=${encodedMessage}`, "_blank");
+        handleWhatsAppClick(null, undefined, message);
         setFormData({ name: "", phone: "", message: "" });
     };
 

@@ -136,3 +136,10 @@ export const productCategories = [
         ],
     },
 ];
+
+export const managers = [
+    { name: "Manager 1", phone: "+996 505 150 110", whatsapp: "996505150110" },
+    { name: "Manager 2", phone: "+996 504 120 110", whatsapp: "996504120110" },
+    { name: "Manager 3", phone: "+996 776 120 110", whatsapp: "996776120110" },
+    { name: "Manager 4", phone: "+996 557 120 110", whatsapp: "996557120110" },
+];

@@ -9,7 +9,7 @@ interface PopularProductsProps {
     selectedCategory: string;
     setSelectedCategory: (id: string | null) => void;
     setSelectedProduct: (product: any) => void;
-    handleWhatsAppClick: (product: any) => void;
+    handleWhatsAppClick: (product: any, managerPhone?: string, customMessage?: string) => void;
     categories: Category[];
 }
 

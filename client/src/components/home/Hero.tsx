@@ -4,7 +4,7 @@ import { t, type Language } from "@/lib/i18n";
 
 interface HeroProps {
     language: Language;
-    handleWhatsAppClick: (product?: any) => void;
+    handleWhatsAppClick: (product?: any, managerPhone?: string, customMessage?: string) => void;
 }
 
 export function Hero({ language, handleWhatsAppClick }: HeroProps) {

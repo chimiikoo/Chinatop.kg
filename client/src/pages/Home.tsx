@@ -8,6 +8,7 @@ import { t } from "@/lib/i18n";
 import { useProducts } from "@/hooks/useProducts";
 import { Hero } from "@/components/home/Hero";
 import { Stats } from "@/components/home/Stats";
+import { ManagerSelectionModal } from "@/components/home/ManagerSelectionModal";
 
 // Lazy load heavy components
 const WhyChooseUs = lazy(() => import("@/components/home/WhyChooseUs").then(module => ({ default: module.WhyChooseUs })));
@@ -16,8 +17,10 @@ const PopularProducts = lazy(() => import("@/components/home/PopularProducts").t
 const About = lazy(() => import("@/components/home/About").then(module => ({ default: module.About })));
 const Testimonials = lazy(() => import("@/components/home/Testimonials").then(module => ({ default: module.Testimonials })));
 const Contact = lazy(() => import("@/components/home/Contact").then(module => ({ default: module.Contact })));
+const Managers = lazy(() => import("@/components/home/Managers").then(module => ({ default: module.Managers })));
 const ProductDetail = lazy(() => import("@/components/home/ProductDetail").then(module => ({ default: module.ProductDetail })));
 const MapView = lazy(() => import("@/components/Map").then(module => ({ default: module.MapView })));
+const Instagram = lazy(() => import("@/components/home/Instagram").then(module => ({ default: module.Instagram })));
 
 // Loading fallback component
 const SectionLoader = () => (
@@ -34,6 +37,7 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [managerSelectState, setManagerSelectState] = useState<{ isOpen: boolean; product?: any; message?: string }>({ isOpen: false });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,16 +48,20 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleWhatsAppClick = (product?: any) => {
-    let message = language === "ru" ? "Привет! Я интересуюсь вашими товарами." : "Салам! Мен сиздин товарларыңызга кызыгып жатам.";
-    if (product) {
-      const productName = product.nameKey ? t(product.nameKey, language) : product.name;
-      message = language === "ru"
-        ? `Привет! Я интересуюсь товаром: "${productName}" (${product.price} сом). Можете ли вы предоставить подробную информацию?`
-        : `Ассалому алейкум! Мен бул товарга кызыгып жатам: "${productName}" (${product.price} сом). Сиз толук маалыматты бере аласызбы?`;
+  const handleWhatsAppClick = (product?: any, managerPhone?: string, customMessage?: string) => {
+    if (managerPhone) {
+      let message = customMessage || (language === "ru" ? "Привет! Я интересуюсь вашими товарами." : "Салам! Мен сиздин товарларыңызга кызыгып жатам.");
+      if (product && !customMessage) {
+        const productName = product.nameKey ? t(product.nameKey, language) : product.name;
+        message = language === "ru"
+          ? `Привет! Я интересуюсь товаром: "${productName}" (${product.price} сом). Можете ли вы предоставить подробную информацию?`
+          : `Ассалому алейкум! Мен бул товарга кызыгып жатам: "${productName}" (${product.price} сом). Сиз толук маалыматты бере аласызбы?`;
+      }
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${managerPhone.replace(/[^0-9]/g, '')}?text=${encodedMessage}`, "_blank");
+    } else {
+      setManagerSelectState({ isOpen: true, product, message: customMessage });
     }
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/996507120110?text=${encodedMessage}`, "_blank");
   };
 
   // Show product detail view
@@ -132,18 +140,10 @@ export default function Home() {
 
       <Suspense fallback={<SectionLoader />}>
         <section id="location" className="bg-white/50 backdrop-blur-md py-20">
-          <div className="container">
-            <h2 className="text-4xl font-poppins font-bold text-center text-gray-900 mb-4">{t("map.title", language)}</h2>
+          <div className="container px-4">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-center text-gray-900 mb-4">{t("map.title", language)}</h2>
             <p className="text-center text-gray-600 mb-12">{t("map.subtitle", language)}</p>
-            {/* Map details are statically rendered in MapView or we can duplicate the static text here if MapView is just the map. 
-                 Checking MapView props... MapView component seems to be just the iframe. 
-                 The Contact details (Address, Hours, Phone) were part of the Location section in original file.
-                 I need to bring those back here or move them to MapView.
-                 To keep MapView focused, I'll put them here or create a LocationSection wrapper.
-                 Let's check Map.tsx content again.
-             */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {/* Quick inline content for location details to avoid another small component file */}
               <div className="glass p-6 rounded-xl">
                 <MapPin className="w-8 h-8 text-orange-600 mb-3" />
                 <h3 className="font-poppins font-bold text-gray-900 mb-2">{t("contact.address_label", language)}</h3>
@@ -172,6 +172,21 @@ export default function Home() {
       <Suspense fallback={<SectionLoader />}>
         <Contact language={language} handleWhatsAppClick={handleWhatsAppClick} />
       </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <Managers language={language} />
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <Instagram language={language} />
+      </Suspense>
+
+      <ManagerSelectionModal
+        isOpen={managerSelectState.isOpen}
+        language={language}
+        onClose={() => setManagerSelectState({ isOpen: false })}
+        onSelect={(phone) => handleWhatsAppClick(managerSelectState.product, phone, managerSelectState.message)}
+      />
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
