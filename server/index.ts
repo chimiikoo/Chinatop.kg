@@ -22,15 +22,24 @@ async function startServer() {
   app.use(express.static(staticPath));
 
   // API Routes
-  const DATA_FILE = path.resolve(__dirname, "data", "products.json");
-  const UPLOADS_DIR = path.resolve(__dirname, "..", "client", "public", "uploads");
+  const DATA_DIR = process.env.NODE_ENV === "production"
+    ? path.resolve(__dirname, "data")
+    : path.resolve(__dirname, "data");
+  const DATA_FILE = path.join(DATA_DIR, "products.json");
 
-  // Ensure uploads directory exists
+  const UPLOADS_DIR = process.env.NODE_ENV === "production"
+    ? path.resolve(staticPath, "uploads")
+    : path.resolve(__dirname, "..", "client", "public", "uploads");
+
+  // Ensure directories exist
   try {
+    await fs.mkdir(DATA_DIR, { recursive: true });
     await fs.mkdir(UPLOADS_DIR, { recursive: true });
   } catch (err) {
-    console.error("Error creating uploads dir:", err);
+    console.error("Error creating directories:", err);
   }
+
+
 
   // Multer config for file uploads
   const storage = multer.diskStorage({
@@ -66,10 +75,14 @@ async function startServer() {
 
   app.post("/api/login", (req, res) => {
     const { password } = req.body;
-    // Simple hardcoded password for demonstration
-    if (password === "chinatop007") {
+    console.log(`Login attempt with password: ${password}`);
+    
+    // Support both requested case and lowercase for better UX
+    if (password === "ChinaTop007" || password === "chinatop007") {
+      console.log("Login successful");
       res.json({ success: true, token: "admin-secret-token" });
     } else {
+      console.log("Login failed: Invalid password");
       res.status(401).json({ error: "Invalid password" });
     }
   });

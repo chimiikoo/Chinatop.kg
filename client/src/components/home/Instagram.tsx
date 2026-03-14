@@ -102,7 +102,7 @@ export function Instagram({ language }: InstagramProps) {
                             onPause={() => setIsPlaying(false)}
                             onEnded={() => setIsPlaying(false)}
                         >
-                            <source src="/videos/presentation.mp4" type="video/mp4" />
+                            <source src="/videos/presentation1.mp4" type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
 

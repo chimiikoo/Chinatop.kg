@@ -11,8 +11,12 @@ export interface Product {
     descriptionKey: string;
     featuresKeys: string[];
     image: string;
-    name?: string; // Fallback if not using keys
-    description?: string; // Fallback
+    name?: string; 
+    description?: string;
+    name_ru?: string;
+    name_ky?: string;
+    desc_ru?: string;
+    desc_ky?: string;
 }
 
 export interface Category {
@@ -21,6 +25,10 @@ export interface Category {
     descriptionKey: string;
     image: string;
     products: Product[];
+    name_ru?: string;
+    name_ky?: string;
+    desc_ru?: string;
+    desc_ky?: string;
 }
 
 export function useProducts() {

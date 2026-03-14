@@ -29,9 +29,11 @@ export function PopularProducts({
             .find((c) => c.id === selectedCategory)
             ?.products.filter((p) => {
                 const matchesPrice = p.price >= priceRange[0] && p.price <= priceRange[1];
-                const productName = t(p.nameKey, language).toLowerCase();
-                const productDesc = t(p.descriptionKey, language).toLowerCase();
-                const matchesSearch = productName.includes(searchQuery.toLowerCase()) || productDesc.includes(searchQuery.toLowerCase());
+                
+                const name = (language === "ru" ? p.name_ru : p.name_ky) || (p.nameKey ? t(p.nameKey, language) : p.name || "");
+                const desc = (language === "ru" ? p.desc_ru : p.desc_ky) || (p.descriptionKey ? t(p.descriptionKey, language) : p.description || "");
+                
+                const matchesSearch = name.toLowerCase().includes(searchQuery.toLowerCase()) || desc.toLowerCase().includes(searchQuery.toLowerCase());
                 return matchesPrice && matchesSearch;
             })
         : [];
@@ -59,7 +61,7 @@ export function PopularProducts({
                                 type="text"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder={language === "ru" ? "Например: CHS581L..." : "Мисалы: CHS581L..."}
+                                placeholder={language === "ru" ? "Например: CHAS581L..." : "Мисалы: CHS581L..."}
                                 className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 outline-none transition-all"
                             />
                         </div>
@@ -85,39 +87,40 @@ export function PopularProducts({
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
-                    {filteredProducts?.map((product) => (
-                        <div
-                            key={product.id}
-                            className="glass p-3 md:p-6 rounded-xl hover-scale transition-all group cursor-pointer"
-                            onClick={() => setSelectedProduct(product)}
-                        >
-                            <img src={product.image} alt={t(product.nameKey, language)} className="w-full h-32 md:h-48 object-cover rounded-lg mb-3 md:mb-4 group-hover:shadow-lg transition-shadow" />
-                            <div className="flex items-center gap-1 mb-1 md:mb-2">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className={`w-3 h-3 ${i < Math.floor(product.rating) ? "fill-orange-400 text-orange-400" : "text-gray-300"}`} />
-                                ))}
-                                <span className="text-xs md:text-sm text-gray-600 font-medium ml-1 md:ml-2">
-                                    {t("popular_products.quantity", language)}: {product.reviews}
-                                </span>
+                    {filteredProducts?.map((product) => {
+                        const productName = (language === "ru" ? product.name_ru : product.name_ky) || (product.nameKey ? t(product.nameKey, language) : product.name || "");
+                        return (
+                            <div
+                                key={product.id}
+                                className="glass p-3 md:p-6 rounded-xl hover-scale transition-all group cursor-pointer"
+                                onClick={() => setSelectedProduct(product)}
+                            >
+                                <img src={product.image} alt={productName} className="w-full h-32 md:h-48 object-cover rounded-lg mb-3 md:mb-4 group-hover:shadow-lg transition-shadow" />
+                                <div className="flex items-center gap-1 mb-1 md:mb-2 text-orange-600 font-bold">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse mr-1" />
+                                    <span className="text-[10px] md:text-xs">
+                                        {language === "ru" ? "В наличии:" : "Кампада:"} {product.rating} шт.
+                                    </span>
+                                </div>
+                                <h4 className="font-poppins font-bold text-gray-900 text-sm md:text-base mb-1 md:mb-2 line-clamp-2">{productName}</h4>
+                                <p className="text-sm md:text-2xl font-bold text-orange-600 mb-2 md:mb-4">{product.price.toLocaleString()} {language === "ru" ? "сом" : "сом"}</p>
+                                <div className="flex flex-col lg:flex-row gap-2">
+                                    <Button className="flex-1 gradient-orange text-white rounded-lg hover-scale text-xs md:text-sm py-1 h-8 md:h-10">
+                                        {t("gallery.details", language)}
+                                    </Button>
+                                    <Button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleWhatsAppClick(product);
+                                        }}
+                                        className="flex-1 gradient-orange text-white rounded-lg hover-scale text-xs md:text-sm py-1 h-8 md:h-10"
+                                    >
+                                        {t("popular_products.request_price", language)}
+                                    </Button>
+                                </div>
                             </div>
-                            <h4 className="font-poppins font-bold text-gray-900 text-sm md:text-base mb-1 md:mb-2 line-clamp-2">{t(product.nameKey, language)}</h4>
-                            <p className="text-sm md:text-2xl font-bold text-orange-600 mb-2 md:mb-4">{product.price.toLocaleString()} {language === "ru" ? "сом" : "сом"}</p>
-                            <div className="flex flex-col lg:flex-row gap-2">
-                                <Button className="flex-1 gradient-orange text-white rounded-lg hover-scale text-xs md:text-sm py-1 h-8 md:h-10">
-                                    {t("gallery.details", language)}
-                                </Button>
-                                <Button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleWhatsAppClick(product);
-                                    }}
-                                    className="flex-1 gradient-orange text-white rounded-lg hover-scale text-xs md:text-sm py-1 h-8 md:h-10"
-                                >
-                                    {t("popular_products.request_price", language)}
-                                </Button>
-                            </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

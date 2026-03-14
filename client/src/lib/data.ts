@@ -2,16 +2,24 @@ export const productCategories = [
     {
         id: "sports-equipment",
         nameKey: "categories.sports_equipment",
+        name_ru: "Спортивное оборудование",
+        name_ky: "Спорт жабдыктары",
         descriptionKey: "categories.sports_equipment_desc",
+        desc_ru: "Беговые дорожки и тренажеры для дома и зала",
+        desc_ky: "Үй жана зал үчүн чуркоо жолдору жана тренажерлор",
         image: "/images/treadmills-category.jpg",
         products: [
             {
                 id: 1,
                 nameKey: "products.treadmill_1",
+                name_ru: "Беговая дорожка Chasall",
+                name_ky: "Chasall чуркоо жолу",
                 price: 25000,
                 rating: 4.8,
                 reviews: 42,
                 descriptionKey: "products.treadmill_1_desc",
+                desc_ru: "Компактная и надежная модель для дома",
+                desc_ky: "Үй үчүн компакттуу жана ишенимдүү модель",
                 featuresKeys: ["product_detail.warranty"],
                 image: "/images/Chasall 25 000.png",
             },
@@ -134,6 +142,13 @@ export const productCategories = [
                 image: "/images/PREMIUM MAX 780  185 000.png",
             },
         ],
+    },
+    {
+        id: "for-gyms",
+        nameKey: "categories.for_gyms",
+        descriptionKey: "categories.for_gyms_desc",
+        image: "/images/begovoi (1).png",
+        products: [],
     },
 ];
 

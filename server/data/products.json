@@ -158,5 +158,33 @@
         "image": "/images/PREMIUM MAX 780  185 000.png"
       }
     ]
+  },
+  {
+    "id": "for-gyms",
+    "nameKey": "categories.for_gyms",
+    "descriptionKey": "categories.for_gyms_desc",
+    "image": "/images/begovoi (1).png",
+    "products": [
+      {
+        "id": 1773464844787,
+        "nameKey": "",
+        "name_ru": "Ashar Go",
+        "name_ky": "Ashar Go ",
+        "price": 100000,
+        "rating": 5,
+        "reviews": 0,
+        "descriptionKey": "",
+        "desc_ru": "Краундфандинговая платформа для нахождения первых инвесторов",
+        "desc_ky": "Краундфандинговая платформа для нахождения первых инвесторов",
+        "featuresKeys": [
+          "product_detail.warranty"
+        ],
+        "image": "/uploads/1773464850225-809541228.png"
+      }
+    ],
+    "name_ru": "Товары для Спортзалов",
+    "name_ky": "Спорттук залдар учун",
+    "desc_ru": "Тут все товары для спортивных залов.\n Для заказа или по сотрудничеству можете написать нашим менеджерам",
+    "desc_ky": "Бул жерде спорттук залдар учун товарлар жуктолгон. Сатып алуу учун же байланыш учун менеджерге жазыныз"
   }
 ]

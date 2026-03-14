@@ -21,7 +21,9 @@ export function ProductDetail({
     isSticky
 }: ProductDetailProps) {
     const [showManagerSelect, setShowManagerSelect] = useState(false);
-    const productName = product.nameKey ? t(product.nameKey, language) : product.name;
+    
+    const productName = (language === "ru" ? product.name_ru : product.name_ky) || (product.nameKey ? t(product.nameKey, language) : product.name || "");
+    const productDesc = (language === "ru" ? product.desc_ru : product.desc_ky) || (product.descriptionKey ? t(product.descriptionKey, language) : product.description || "");
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-500">
@@ -54,14 +56,12 @@ export function ProductDetail({
                         <div>
                             <h1 className="text-3xl md:text-4xl font-poppins font-bold text-gray-900 dark:text-white mb-2">{productName}</h1>
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="flex items-center gap-1">
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? "fill-orange-400 text-orange-400" : "text-gray-300"}`} />
-                                    ))}
+                                <div className="flex items-center gap-2 text-green-600 font-bold bg-green-50 dark:bg-green-950/30 px-3 py-1 rounded-full border border-green-200 dark:border-green-800">
+                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                    <span className="text-sm">
+                                        {language === "ru" ? "В наличии:" : "Кампада:"} {product.rating} шт.
+                                    </span>
                                 </div>
-                                <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                                    {t("popular_products.quantity", language)}: {product.reviews}
-                                </span>
                             </div>
                         </div>
 
@@ -74,7 +74,7 @@ export function ProductDetail({
                         {/* Description */}
                         <div>
                             <h3 className="text-xl font-poppins font-bold text-gray-900 dark:text-white mb-3">{t("product_detail.description", language)}</h3>
-                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{t(product.descriptionKey, language)}</p>
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap">{productDesc}</p>
                         </div>
 
                         {/* Features */}

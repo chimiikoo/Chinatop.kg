@@ -14,6 +14,12 @@ export function About({ language }: AboutProps) {
                     <p>{t("about.mission", language)}</p>
                     <p>{t("about.history", language)}</p>
                 </div>
+                
+                <div className="mt-12 p-6 rounded-xl bg-orange-50 border border-orange-100 dark:bg-orange-950/20 dark:border-orange-900/30">
+                    <h3 className="text-2xl font-poppins font-bold text-orange-600 mb-4">{t("about.new_direction_title", language)}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{t("about.new_direction_desc", language)}</p>
+                </div>
+
                 <div className="grid grid-cols-2 gap-6 mt-12">
                     <div className="text-center">
                         <p className="text-3xl font-bold gradient-text">5000+</p>
